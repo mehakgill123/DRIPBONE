@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRIPBONE - Premium Streetwear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff3c00;
+            --secondary: #00a2ff;
+            --accent: #9d00ff;
+            --light: #f8f8f8;
+            --dark: #111;
+            --success: #00cc66;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 5px 15px;
+            margin: 10px 0;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-bar button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-buttons button {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Admin Access Button */
+        .admin-access-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+
+        .admin-access-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashboard-card i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .dashboard-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            color: #666;
+        }
+
+        /* Feedback Section */
+        .feedback {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .form-container {
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Admin Secret Code */
+        .admin-secret {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .admin-secret-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .admin-secret-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        /* Admin Modal */
+        .admin-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .admin-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .admin-modal-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                gap: 10px;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">DRIP<span>BONE</span></div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for t-shirts...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="auth-buttons">
+                    <button id="loginBtn">Login</button>
+                    <button id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hidden Admin Access Button -->
+    <button class="admin-access-btn" id="adminAccessBtn">
+        <i class="fas fa-lock"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Express Your Style With DRIPBONE</h1>
+                <p>Premium quality t-shirts with unique designs that make you stand out from the crowd.</p>
+                <button class="cta-button">Shop Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Your Dashboard</h2>
+            <p>Manage your account, orders, and preferences</p>
+            
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>Orders</h3>
+                    <p>Track and manage your orders</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Wishlist</h3>
+                    <p>Your favorite items</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-user"></i>
+                    <h3>Profile</h3>
+                    <p>Manage your account details</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Rewards</h3>
+                    <p>Your points and discounts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback" id="feedback">
+        <div class="container">
+            <h2 class="section-title">We'd Love Your Feedback</h2>
+            
+            <div class="form-container">
+                <h3 class="form-title">Send us your thoughts</h3>
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Feedback</label>
+                        <textarea id="message" placeholder="Tell us what you think..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About DRIPBONE</h3>
+                    <p>We create premium streetwear that combines comfort, style, and individuality.</p>
+                    <p>Our mission is to help you express your unique personality through fashion.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> dripbonedb@gmail.com</p>
+                    <div class="social-icons">
+                        <!-- Only Instagram icon remains -->
+                        <a href="https://instagram.com/dripbone" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 DRIPBONE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Secret Code Entry -->
+    <div class="admin-secret" id="adminSecret">
+        <div class="admin-secret-content">
+            <h3>Admin Access Code</h3>
+            <div class="form-group">
+                <input type="password" id="adminCode" placeholder="Enter admin access code">
+            </div>
+            <button onclick="verifyAdminCode()" class="submit-btn">Verify</button>
+            <button onclick="document.getElementById('adminSecret').style.display = 'none'" style="background: #ccc; color: #333; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 15px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-content">
+            <h3>Admin Panel</h3>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 5px;">
+                <h4 style="margin-bottom: 10px;">Add New Product</h4>
+                <div class="form-group">
+                    <input type="text" id="productName" placeholder="Product Name">
+                </div>
+                <div class="form-group">
+                    <input type="number" id="productPrice" placeholder="Price in INR">
+                </div>
+                <div class="form-group">
+                    <textarea id="productDescription" placeholder="Product Description"></textarea>
+                </div>
+                <button onclick="addProduct()" class="submit-btn">Add Product</button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 5px;">
+                <h4 style="margin-bottom: 10px;">Database Operations</h4>
+                <button onclick="viewDatabase()" class="submit-btn" style="margin-bottom: 10px;">View Database</button>
+                <button onclick="exportDatabase()" class="submit-btn">Export Database</button>
+            </div>
+            
+            <button onclick="document.getElementById('adminModal').style.display = 'none'" style="background: #ccc; color: #333; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 15px;">Close Admin Panel</button>
+        </div>
+    </div>
+
+    <script>
+        // Simulated database
+        const simulatedDB = {
+            users: [],
+            products: [],
+            feedback: [],
+            orders: []
+        };
+
+        // Admin access code (change this to your preferred code)
+        const ADMIN_ACCESS_CODE = "DRIPBONE2025";
+
+        // DOM Elements
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const adminAccessBtn = document.getElementById('adminAccessBtn');
+        const feedbackForm = document.getElementById('feedbackForm');
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+
+        // Event Listeners
+        loginBtn.addEventListener('click', () => {
+            alert('Login functionality would open here');
+        });
+
+        registerBtn.addEventListener('click', () => {
+            alert('Registration form would open in a real application. After registration, an email notification would be sent to dripbonedb@gmail.com');
+            
+            // Simulate adding a user to the database
+            const newUser = {
+                id: Date.now(),
+                email: 'newuser@example.com',
+                registeredAt: new Date().toLocaleString()
+            };
+            simulatedDB.users.push(newUser);
+            console.log('New user registered:', newUser);
+        });
+
+        adminAccessBtn.addEventListener('click', () => {
+            document.getElementById('adminSecret').style.display = 'flex';
+        });
+
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simulate adding feedback to database
+            const newFeedback = {
+                id: Date.now(),
+                name,
+                email,
+                message,
+                submittedAt: new Date().toLocaleString()
+            };
+            simulatedDB.feedback.push(newFeedback);
+            
+            alert('Thank you for your feedback!');
+            feedbackForm.reset();
+            console.log('New feedback submitted:', newFeedback);
+        });
+
+        // Verify admin access code
+        function verifyAdminCode() {
+            const code = document.getElementById('adminCode').value;
+            if (code === ADMIN_ACCESS_CODE) {
+                document.getElementById('adminSecret').style.display = 'none';
+                document.getElementById('adminModal').style.display = 'flex';
+            } else {
+                alert('Invalid admin access code!');
+            }
+        }
+
+        // Add product functionality
+        function addProduct() {
+            const name = document.getElementById('productName').value;
+            const price = document.getElementById('productPrice').value;
+            const description = document.getElementById('productDescription').value;
+            
+            if (!name || !price) {
+                alert('Please enter product name and price');
+                return;
+            }
+            
+            // Simulate adding product to database
+            const newProduct = {
+                id: Date.now(),
+                name,
+                price: `₹${price}`,
+                description,
+                addedAt: new Date().toLocaleString()
+            };
+            simulatedDB.products.push(newProduct);
+            
+            alert('Product added successfully!');
+            
+            // Clear form
+            document.getElementById('productName').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productDescription').value = '';
+            
+            console.log('New product added:', newProduct);
+            console.log('All products in DB:', simulatedDB.products);
+        }
+
+        // View database
+        function viewDatabase() {
+            alert('Database content displayed in console (F12 to view)');
+            console.log('DRIPBONE Database:', simulatedDB);
+        }
+
+        // Export database
+        function exportDatabase() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(simulatedDB, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "dripbone_database.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+            alert('Database exported successfully!');
+        }
+
+        // Search functionality
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+        
+        function performSearch() {
+            const searchTerm = searchInput.value;
+            if (searchTerm) {
+                alert(`Searching for: ${searchTerm}`);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+    </script>
+</body>
+</html>
